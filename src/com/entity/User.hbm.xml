@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.entity.User" table="tb_custom">
+        <id name="cid" type="integer">
+            <column name="cid"/>
+            <generator class="increment" />
+        </id>
+        <property name="cname"/>
+        <property name="pwd"/>
+        <set lazy="false" name="orders" cascade="save-update" inverse="true">
+            <key column="cid"></key>
+            <one-to-many class="com.entity.Order"></one-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
